@@ -61,13 +61,12 @@ objects:
 - apiVersion: v1
   kind: Service
   metadata:
-    labels:
-      app: prometheus
     annotations:
       prometheus.io/scrape: "true"
       prometheus.io/scheme: https
       service.alpha.openshift.io/serving-cert-secret-name: prometheus-tls
     labels:
+      app: prometheus
       name: prometheus
     name: prometheus
     namespace: "${NAMESPACE}"
@@ -184,6 +183,17 @@ objects:
       # default named port `https`. This works for single API server deployments as
       # well as HA API server deployments.
       scrape_configs:
+      - job_name: 'prometheus'
+        # Override the global default and scrape targets from this job every 5 seconds.
+        scrape_interval: 5s
+        static_configs:
+          - targets: ['localhost:9090']
+
+      - job_name: 'instrumented-app'
+        scrape_interval: 5s
+        static_configs:
+          - targets: ['instrumented-app:8080']
+
       - job_name: 'kubernetes-apiservers'
 
         kubernetes_sd_configs:
