@@ -2,6 +2,8 @@ apiVersion: template.openshift.io/v1
 kind: Template
 metadata:
   name: prometheus
+  labels:
+    app: prometheus
   annotations:
     "openshift.io/display-name": Prometheus
     description: |
@@ -27,6 +29,8 @@ objects:
 - apiVersion: v1
   kind: ServiceAccount
   metadata:
+    labels:
+      app: prometheus
     name: prometheus
     namespace: "${NAMESPACE}"
     annotations:
@@ -45,6 +49,8 @@ objects:
 - apiVersion: route.openshift.io/v1
   kind: Route
   metadata:
+    labels:
+      app: prometheus
     name: prometheus
     namespace: "${NAMESPACE}"
   spec:
@@ -55,6 +61,8 @@ objects:
 - apiVersion: v1
   kind: Service
   metadata:
+    labels:
+      app: prometheus
     annotations:
       prometheus.io/scrape: "true"
       prometheus.io/scheme: https
@@ -74,6 +82,8 @@ objects:
 - apiVersion: v1
   kind: Secret
   metadata:
+    labels:
+      app: prometheus
     name: prometheus-proxy
     namespace: "${NAMESPACE}"
   stringData:
@@ -153,6 +163,8 @@ objects:
 - apiVersion: v1
   kind: ConfigMap
   metadata:
+    labels:
+      app: prometheus
     name: prometheus
     namespace: "${NAMESPACE}"
   data:
