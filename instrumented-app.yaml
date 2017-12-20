@@ -37,7 +37,7 @@ objects:
           deploymentconfig: instrumented-app
       spec:
         containers:
-        - image: jkarasek/metrics:1
+        - image: durandom/instrumented-app
           imagePullPolicy: IfNotPresent
           name: instrumented-app
           ports:
