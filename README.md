@@ -5,8 +5,7 @@
 Prometheus app template is based off the 3.6.1 version of origin
 
 ```
-NAMESPACE=urandom
-oc new-app -f ./prometheus.yaml --labels='app=prometheus' -p NAMESPACE=$NAMESPACE
+oc new-app -f ./prometheus.yaml --labels='app=prometheus' -p NAMESPACE=myproject
 ```
 
 ### Delete prometheus
