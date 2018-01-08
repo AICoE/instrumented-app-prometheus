@@ -37,7 +37,7 @@ objects:
           deploymentconfig: instrumented-app
       spec:
         containers:
-        - image: durandom/instrumented-app
+        - image: aicoe/instrumented-app-go
           imagePullPolicy: IfNotPresent
           name: instrumented-app
           ports:

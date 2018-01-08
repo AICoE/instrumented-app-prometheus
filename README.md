@@ -18,7 +18,7 @@ oc delete all,sa,secrets,svc,cm -l app=prometheus
 ### via images hosted on docker hub
 
 ```
-oc new-app -f ./instrumented-app.yaml
+oc new-app -f ./instrumented-app-go.yaml
 ```
 
 
