@@ -33,8 +33,8 @@ oc new-build --strategy=docker --to=s2i-go --context-dir=1.8 --labels='build=s2i
 #### add a s2i build
 
 ```
-oc new-app s2i-go~https://github.com/durandom/instrumented-app.git --labels='app=instrumented-app'
-oc expose service instrumented-app
+oc new-app s2i-go~https://github.com/AICoE/instrumented-app-go.git --labels='app=instrumented-app'
+oc expose service instrumented-app-go
 ```
 
 Go to 'Builds -> instrumented-app -> Configuration' and add the GitHub Webhook URL to your repo to trigger new builds.
